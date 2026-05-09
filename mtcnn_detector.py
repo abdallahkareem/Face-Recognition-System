@@ -8,10 +8,9 @@ import tensorflow as tf
 from mtcnn import MTCNN
 import cv2
 
-# فتح الكاميرا
 cap = cv2.VideoCapture(0)
 
-# إنشاء detector
+
 detector = MTCNN()
 
 while True:
@@ -20,16 +19,16 @@ while True:
     if not ret:
         break
 
-    # تحويل BGR → RGB
+
     rgb = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
 
-    # كشف الوجوه
+    
     faces = detector.detect_faces(rgb)
 
     for face in faces:
         x, y, w, h = face['box']
 
-        # رسم المستطيل
+        
         cv2.rectangle(
             frame,
             (x, y),
